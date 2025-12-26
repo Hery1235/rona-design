@@ -3,6 +3,7 @@ import { assets } from "../assets/assets";
 import axios from "axios";
 import { backendUrl } from "../App";
 import { toast } from "react-toastify";
+import Loader from "../components/Loading";
 
 const Add = ({ token }) => {
   const [image1, setImage1] = useState(false);
@@ -17,9 +18,11 @@ const Add = ({ token }) => {
   const [subCategory, setSubCategory] = useState("Topwear");
   const [bestseller, setBestseller] = useState(false);
   const [sizes, setSizes] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const formData = new FormData();
@@ -52,8 +55,10 @@ const Add = ({ token }) => {
         setImage3(false);
         setImage4(false);
         setPrice("");
+        setLoading(false);
       } else {
         toast.error(response.data.message);
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -61,6 +66,7 @@ const Add = ({ token }) => {
     }
   };
 
+  if (loading) return <Loader />;
   return (
     <form
       onSubmit={onSubmitHandler}
