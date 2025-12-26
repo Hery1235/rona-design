@@ -84,8 +84,8 @@ const placeOrderStripe = async (req, res) => {
     });
 
     const session = await stripe.checkout.sessions.create({
-      success_url: `${origin}/verify?success=true&orderId=${newOrder._id}`,
-      cancel_url: `${origin}/verify?success=false&orderId=${newOrder._id}`,
+      success_url: `${origin}/orders?success=true&orderId=${newOrder._id}`,
+      cancel_url: `${origin}/cart?canceled=true&orderId=${newOrder._id}`, // stay on cart/checkout page
       line_items,
       mode: "payment",
     });
