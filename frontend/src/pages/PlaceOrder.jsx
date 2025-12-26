@@ -7,7 +7,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const PlaceOrder = () => {
-  const [method, setMethod] = useState("cod");
+  const [method, setMethod] = useState("stripe");
   const {
     navigate,
     backendUrl,
@@ -249,9 +249,9 @@ const PlaceOrder = () => {
         </div>
 
         <div className="mt-12">
-          <Title text1={"PAYMENT"} text2={"METHOD"} />
+          {/* <Title text1={"PAYMENT"} text2={"METHOD"} /> */}
           {/* --------------- Payment Method Selection ------------- */}
-          <div className="flex gap-3 flex-col lg:flex-row">
+          {/* <div className="flex gap-3 flex-col lg:flex-row">
             <div
               onClick={() => setMethod("stripe")}
               className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
@@ -287,7 +287,7 @@ const PlaceOrder = () => {
                 CASH ON DELIVERY
               </p>
             </div>
-          </div>
+          </div> */}
 
           <div className="w-full text-end mt-8">
             <button
